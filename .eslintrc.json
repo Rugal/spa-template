@@ -1,0 +1,98 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "overrides": [],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "@typescript-eslint"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "array-bracket-newline": [
+      "error",
+      "consistent"
+    ],
+    "array-element-newline": [
+      "error",
+      "consistent"
+    ],
+    "arrow-parens": [
+      "error",
+      "always"
+    ],
+    "comma-dangle": [
+      "error",
+      {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always-multiline",
+        "functions": "never"
+      }
+    ],
+    "function-call-argument-newline": [
+      "error",
+      "consistent"
+    ],
+    "indent": [
+      "error",
+      2
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ],
+    "one-var": [
+      "off"
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 100
+      }
+    ],
+    "no-magic-numbers": [
+      "off"
+    ],
+    "no-ternary": [
+      "off"
+    ],
+    "no-warning-comments": [
+      0,
+      {
+        "terms": [
+          "todo"
+        ],
+        "location": "start"
+      }
+    ],
+    "quotes": [
+      "error",
+      "double"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ]
+  }
+}
