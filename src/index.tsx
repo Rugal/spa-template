@@ -1,12 +1,12 @@
 import "./style.css";
-import App from "./component/App";
+import { FinalRouter } from "./router";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(<React.StrictMode>
-  <App />
+  <FinalRouter />
 </React.StrictMode>);
 
 /*
