@@ -1,9 +1,9 @@
 import React from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
@@ -11,17 +11,42 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { useMutation } from "@apollo/client";
 import { createLoginToken } from "./request";
+import { store } from "../../store";
+import { CreateLoginTokenMutation } from "../../generated/graphql/graphql";
+
+const loginProcess = (mutationFunction: any, id: number, password: string) => {
+  /* TODO: login process
+    1. show circle progress with backdrop
+    2. try to get token
+    3. save to valtio if ok, 
+    4. otherwise show error message and back to login screen
+    5. finally, route to the dashboard page
+  */
+  const option = {
+    onCompleted: (data: CreateLoginTokenMutation) => {
+      store.token = data.createToken!;
+      window.location.href = "/dashboard";
+    }, // 3. save to valtio store
+    variables: { id: id, password: password },
+  };
+  mutationFunction(option);
+};
 
 const Login = (): JSX.Element => {
-  const variable = { variables: { id: 1, password: "1" } };
-  const [invoker, { data, loading, error }] = useMutation(createLoginToken);
+  const [id, setId] = React.useState("");
+  const [password, setPassword] = React.useState("");
 
-  if (loading) return <div>Submitting...</div>;
-  if (error) return <div>Submission error! ${error.message}</div>;
-
-  console.log(data);
+  // TODO: reset when graphql on error and show error notification
+  const [mutationFunction, { loading, reset }] = useMutation(createLoginToken);
 
   return <React.Fragment>
+    <Backdrop
+      sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+      // 1. show circle progress with backdrop
+      open={loading}
+    >
+      <CircularProgress color="inherit" />
+    </Backdrop>
     <Box
       sx={{
         marginTop: 8,
@@ -30,12 +55,8 @@ const Login = (): JSX.Element => {
         alignItems: "center",
       }}
     >
-      <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-        <LockOutlinedIcon />
-      </Avatar>
-      <Typography component="h1" variant="h5">
-        Sign in
-      </Typography>
+      <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}><LockOutlinedIcon /></Avatar>
+      <Typography component="h1" variant="h5">Sign in</Typography>
       <Box component="form" noValidate sx={{ mt: 1 }}>
         <TextField
           margin="normal"
@@ -44,7 +65,8 @@ const Login = (): JSX.Element => {
           id="email"
           label="Email Address"
           name="email"
-          autoComplete="email"
+          value={id}
+          onChange={(e) => setId(e.target.value)}
           autoFocus />
         <TextField
           margin="normal"
@@ -54,16 +76,14 @@ const Login = (): JSX.Element => {
           label="Password"
           type="password"
           id="password"
-          autoComplete="current-password" />
-        <FormControlLabel
-          control={<Checkbox value="remember" color="primary" />}
-          label="Remember me" />
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
         <Button
-          type="submit"
           fullWidth
           variant="contained"
           sx={{ mt: 3, mb: 2 }}
-          onClick={() => invoker(variable)}
+          onClick={() => loginProcess(mutationFunction, parseInt(id), password)}
         >
           Sign In
         </Button>
