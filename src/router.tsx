@@ -9,13 +9,13 @@ import Dashboard from "./page/Dashboard";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/login",
     element: <Login />,
     children: [
     ],
   },
   {
-    path: "/dashboard",
+    path: "/",
     element: <Dashboard />,
     children: [
     ],
