@@ -23,6 +23,7 @@
       "version": "detect"
     }
   },
+  "ignorePatterns": ["src/generated/**/*.ts"],
   "rules": {
     "array-bracket-newline": [
       "error",

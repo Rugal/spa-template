@@ -20,7 +20,12 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
+  "exclude": [
+    "node_modules",
+    "src/generated",
+  ],
   "include": [
-    "src"
+    "src",
+    "codegen.ts"
   ]
 }

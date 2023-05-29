@@ -4,9 +4,19 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
 
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+
+// graphql client connection
+const client = new ApolloClient({
+  cache: new InMemoryCache(),
+  uri: process.env.REACT_APP_HOST,
+});
+
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(<React.StrictMode>
-  <FinalRouter />
+  <ApolloProvider client={client}>
+    <FinalRouter />
+  </ApolloProvider>
 </React.StrictMode>);
 
 /*
