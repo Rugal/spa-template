@@ -12,7 +12,7 @@ import Typography from "@mui/material/Typography";
 import { useMutation } from "@apollo/client";
 import { createLoginToken } from "./request";
 import { store } from "../../store";
-import { CreateLoginTokenMutation } from "../../generated/graphql/graphql";
+import { CreateLoginTokenMutation } from "../../generated/graphql/raizekusu/graphql";
 
 const loginProcess = (mutationFunction: any, id: number, password: string) => {
   /* TODO: login process

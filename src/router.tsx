@@ -8,6 +8,7 @@ import Login from "./page/Login";
 import Dashboard from "./page/Dashboard";
 import MainFramework from "./page/MainFramework";
 import App from "./component/App";
+import PostList from "./component/PostList";
 
 const router = createBrowserRouter([
   {
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
       },
       {
         path: "torrent",
-        element: <App />,
+        element: <PostList />,
       },
       {
         path: "candidate",

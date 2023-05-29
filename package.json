@@ -49,14 +49,17 @@
     "web-vitals": "2.1.4"
   },
   "config": {
-    "graphql": "../raizekusu/src/main/resources/graphql/*",
-    "aggregation": "src/generated/graphql/all.graphql"
+    "raizekusu_graphql": "../raizekusu/src/main/resources/graphql/*",
+    "raizekusu_aggregation": "src/generated/graphql/raizekusu/all.graphql",
+    "valstrax_graphql": "../valstrax/src/main/resources/graphql/*",
+    "valstrax_aggregation": "src/generated/graphql/valstrax/all.graphql"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "graphql:generate": "yarn graphql-code-generator --config ./codegen.ts",
-    "graphql:mock": "cat $npm_package_config_graphql > $npm_package_config_aggregation && graphql-faker --co 'http://localhost:3000' $npm_package_config_aggregation",
+    "graphql:mock:raizekusu": "cat $npm_package_config_raizekusu_graphql > $npm_package_config_raizekusu_aggregation && graphql-faker --co 'http://localhost:3000' $npm_package_config_raizekusu_aggregation",
+    "graphql:mock:valstrax": "cat $npm_package_config_valstrax_graphql > $npm_package_config_valstrax_aggregation && graphql-faker --co 'http://localhost:3000' $npm_package_config_valstrax_aggregation",
     "lint": "eslint -c .eslintrc.json 'src/**/*.tsx'",
     "lint:fix": "eslint -c .eslintrc.json --fix 'src/**/*.tsx'",
     "test": "react-scripts test",
