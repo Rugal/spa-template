@@ -9,8 +9,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
+import { Link as RouterLink, } from "react-router-dom";
 
-const pages = ["Torrent", "Setting"];
+const pages = ["Torrent", "Statistic"];
 
 export default function NavigationBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -79,32 +80,24 @@ export default function NavigationBar() {
               textDecoration: "none",
             }}
           >
-            JPT
           </Typography>
+          {/* ============== */}
 
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
+          <Button
+            key="/"
+            sx={{ my: 2, color: "white", display: "block", }}
+            component={RouterLink}
+            to="/"
           >
-            JPT
-          </Typography>
+            <Typography variant="h5">JPT</Typography>
+          </Button>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
+                component={RouterLink}
+                to={page.toLowerCase()}
               >
                 {page}
               </Button>
@@ -112,6 +105,6 @@ export default function NavigationBar() {
           </Box>
         </Toolbar>
       </Container>
-    </AppBar>
+    </AppBar >
   );
 }

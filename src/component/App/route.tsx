@@ -1,9 +1,25 @@
 import { createBrowserRouter, } from "react-router-dom";
-import MyTab from "../../page/MyTab";
+import HomePage from "../../page/HomePage";
+import TorrentList from "../TorrentList";
+import MyTimeLine from "../MyTimeLine";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <MyTab />,
+    element: <HomePage />,
+    children: [
+      {
+        path: "",
+        element: <MyTimeLine />
+      },
+      {
+        path: "torrent",
+        element: <TorrentList />
+      },
+      {
+        path: "statistic",
+        element: <TorrentList />
+      },
+    ],
   },
 ]);

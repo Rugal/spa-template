@@ -1,17 +1,17 @@
 import React from "react";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
-import LogGroup from "../../component/LogGroup";
 import NavigationBar from "../../component/NavigationBar";
+import { Outlet } from "react-router-dom";
 
-const MyTab: React.FC = () =>
+const HomePage: React.FC = () =>
   <>
     <NavigationBar />
     <Container maxWidth="lg">
       <Box sx={{ my: 4 }}>
-        <LogGroup />
+        <Outlet />
       </Box>
     </Container>
   </>;
 
-export default MyTab;
+export default HomePage;
