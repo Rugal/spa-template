@@ -782,7 +782,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/material@npm:^5.14.8":
+"@mui/icons-material@npm:^5.14.9":
+  version: 5.14.9
+  resolution: "@mui/icons-material@npm:5.14.9"
+  dependencies:
+    "@babel/runtime": ^7.22.15
+  peerDependencies:
+    "@mui/material": ^5.0.0
+    "@types/react": ^17.0.0 || ^18.0.0
+    react: ^17.0.0 || ^18.0.0
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  checksum: 89cf661d6417c4769df483ff5c4aa23365a8763ba13f2b6ceb4337351ece02379af96eced84afcfd0709ad7b1e3e51cd0c956af195b3dfeaafb76bebd18a833d
+  languageName: node
+  linkType: hard
+
+"@mui/material@npm:^5.14.9":
   version: 5.14.9
   resolution: "@mui/material@npm:5.14.9"
   dependencies:
@@ -3601,7 +3617,8 @@ __metadata:
     "@emotion/react": ^11.11.1
     "@emotion/styled": ^11.11.0
     "@fontsource/roboto": ^5.0.8
-    "@mui/material": ^5.14.8
+    "@mui/icons-material": ^5.14.9
+    "@mui/material": ^5.14.9
     "@types/react": ^18.2.15
     "@types/react-dom": ^18.2.7
     "@typescript-eslint/eslint-plugin": ^6.0.0
