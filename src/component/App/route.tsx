@@ -2,6 +2,7 @@ import { createBrowserRouter, } from "react-router-dom";
 import HomePage from "../../page/HomePage";
 import TorrentList from "../TorrentList";
 import MyTimeLine from "../MyTimeLine";
+import Chart from "../Chart";
 
 export const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "statistic",
-        element: <TorrentList />
+        element: <Chart />
       },
     ],
   },
